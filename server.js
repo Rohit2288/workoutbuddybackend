@@ -12,21 +12,23 @@ const app = express();
 // CORS setup
 const allowedOrigins = [
   'http://localhost:3000',                // Local development URL
-  'https://celebrated-jelly-9fcbc4.netlify.app/login'          // Deployed frontend URL (Replace with your actual deployed frontend URL)
+  'https://celebrated-jelly-9fcbc4.netlify.app'          // Deployed frontend URL (Replace with your actual deployed frontend URL)
 ];
-
 // Apply CORS middleware
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests from allowed origins or no origin (e.g., Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // Allow credentials (if needed, like cookies or authorization headers)
-}));
+const corsOptions = {
+    origin: (origin, callback) => {
+      // If no origin or origin is in the list of allowedOrigins, allow the request
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  };
+  
+  app.use(cors(corsOptions));
 
 //middleware to parse JSON
 app.use(express.json());
