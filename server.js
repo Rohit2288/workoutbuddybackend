@@ -11,8 +11,8 @@ const app = express();
 
 // CORS setup
 const allowedOrigins = [
-  'http://localhost:3000',                // Local development URL
-  `https://starlit-llama-0b08be.netlify.app `         // Deployed frontend URL (Replace with your actual deployed frontend URL)
+  'http://localhost:3000',                
+  `https://starlit-llama-0b08be.netlify.app `         
 ];
 // Apply CORS middleware
 const corsOptions = {
@@ -28,7 +28,7 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization']
   };
   
-  app.use(cors(corsOptions));
+  app.use(cors());
 
 //middleware to parse JSON
 app.use(express.json());
