@@ -12,7 +12,7 @@ const app = express();
 // CORS setup
 const allowedOrigins = [
   'http://localhost:3000',                // Local development URL
-  'https://celebrated-jelly-9fcbc4.netlify.app'          // Deployed frontend URL (Replace with your actual deployed frontend URL)
+  `https://starlit-llama-0b08be.netlify.app `         // Deployed frontend URL (Replace with your actual deployed frontend URL)
 ];
 // Apply CORS middleware
 const corsOptions = {
